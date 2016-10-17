@@ -18,9 +18,18 @@ var Button = React.createClass({
 		console.log(this.state.buttonValue);
 	},
 
+	passButtonValue: function() {
+		console.log('we are in the pass');
+
+		this.props.buttonPress(this.props.buttonValue);
+		
+	},
+
 	render: function() {
 		return (
-		  <TouchableWithoutFeedback>
+		  <TouchableWithoutFeedback
+			  	onPress={this.passButtonValue}
+			>
 				<View style={styles.button}>
 					<Text style={styles.buttonText}>
 						{this.state.buttonValue}
@@ -33,16 +42,16 @@ var Button = React.createClass({
 
 var styles = StyleSheet.create({
 	button: {
+		flex: 0.5,
+		backgroundColor: 'blue',
 		borderColor: 'black',
-		borderWidth: 1 ,
-		height: 30,
-		width: 20,
-		padding: 30,
-		justifyContent: 'flex-start',
-		alignItems: 'flex-start',
+		borderWidth: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
 	buttonText: {
 		fontSize: 25,
+		color: 'white',
 	}
 })
 

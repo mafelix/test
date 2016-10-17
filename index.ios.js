@@ -18,67 +18,110 @@ import {
 
 var Button = require('./assets/components/button');
 export default class pushTimeSign extends Component {
-  getInitialstate() {
+  constructor(props) {
+  super(props);
+    this.state = {
+      employeeId: '',
+      placeholder: '',
+    }
+  }
 
+  componentWillReceiveProps(nextProp, nextState) {
+    console.log(nextProp);
+  }
+
+  componentDidMount() {
+    console.log(this);
+  }
+
+  resetPlaceholder() {
+    console.log('we resetting that shit');
+    this.setState({placeholder: ''}, () => {console.log(this.state.placeholder)});
+    console.log(this.state.placeholder.length);
+  }
+
+  buttonPress(input) {
+    if (input === 'reset') {
+      this.resetPlaceholder()
+    } else if (input === 'go') {
+      this.submitLoginRequest();
+    } else {
+      if (this.state.placeholder.length + 1 < 9) {
+        this.setState({placeholder: this.state.placeholder + input});
+        console.log(input);
+      } 
+    }
   }
 
   render() {
     return (
       <View style={styles.mainContainer}>
         <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-start', paddingLeft: 25, alignItems: 'flex-end'}}>
-          <Image style={{height:100, width: 100, backgroundColor: 'black', resizeMode: 'contain'}} source={require('./assets/push-logo.png')} />
+          <Image style={{height:100, width: 150, backgroundColor: 'black', resizeMode: 'contain', margin: 10,}} source={require('./assets/push-logo.png')} />
         </View>
 
         <View style={styles.border}>
           <View style={styles.textInputContainer}> 
             <Text style={styles.textInput}>
-              123456789
+              {this.state.placeholder}
             </Text>
           </View>
         </View>
 
         <View style={styles.buttonContainer}>
           <Button
-           buttonValue={'1'}
+            buttonPress={this.buttonPress.bind(this)}
+            buttonValue={'1'}
           />
           <Button
-           buttonValue={'2'}
+            buttonPress={this.buttonPress.bind(this)}
+            buttonValue={'2'}
           />
           <Button
-           buttonValue={'3'}
+            buttonPress={this.buttonPress.bind(this)}
+            buttonValue={'3'}
           />
           <Button
-           buttonValue={'go'}
+            buttonPress={this.buttonPress.bind(this)}
+            buttonValue={'go'}
           />
         </View>
 
          <View style={styles.buttonContainer}>
            <Button
+            buttonPress={this.buttonPress.bind(this)}
             buttonValue={'4'}
            />
            <Button
+            buttonPress={this.buttonPress.bind(this)}
             buttonValue={'5'}
            />
            <Button
+            buttonPress={this.buttonPress.bind(this)}
             buttonValue={'6'}
            />
            <Button
+            buttonPress={this.buttonPress.bind(this)}
             buttonValue={'reset'}
            />
         </View>
 
          <View style={styles.buttonContainer}>
            <Button
+            buttonPress={this.buttonPress.bind(this)}
             buttonValue={'7'}
            />
            <Button
+            buttonPress={this.buttonPress.bind(this)}
             buttonValue={'8'}
            />
            <Button
+            buttonPress={this.buttonPress.bind(this)}
             buttonValue={'9'}
            />
            <Button
-            buttonValue={'go'}
+            buttonPress={this.buttonPress.bind(this)}
+            buttonValue={'0'}
            />
         </View>
 
@@ -93,7 +136,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   border: {
-    flex: 0.8,
+    flex: 0.6,
     flexDirection: 'row',
     alignItems: 'center',
     borderColor: 'black',
@@ -105,19 +148,15 @@ const styles = StyleSheet.create({
   textInputContainer: {
     flex: 1,  
     flexDirection: 'row', 
-    textAlign: 'right',
     justifyContent: 'flex-end',
     paddingRight: 10,
   },
   textInput: {
-    fontSize:  65,
+    fontSize: 65,
   },
   buttonContainer: {
     flex: 1, 
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 25,
-
   },
 });
 
