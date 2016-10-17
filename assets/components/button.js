@@ -10,8 +10,12 @@ import {
 var Button = React.createClass({
 	getInitialState: function() {
 		return ({
-			buttonValue: this.props.buttonValue
+			buttonValue: this.props.buttonValue,
 		})
+	},
+
+	componentDidMount: function() {
+		console.log(this.state.buttonValue);
 	},
 
 	render: function() {
@@ -19,7 +23,7 @@ var Button = React.createClass({
 		  <TouchableWithoutFeedback>
 				<View style={styles.button}>
 					<Text style={styles.buttonText}>
-						1
+						{this.state.buttonValue}
 					</Text>
 				</View>
 			</TouchableWithoutFeedback>
@@ -30,20 +34,15 @@ var Button = React.createClass({
 var styles = StyleSheet.create({
 	button: {
 		borderColor: 'black',
-		borderWidth: 1,
-		backgroundColor: 'blue',
+		borderWidth: 1 ,
 		height: 30,
 		width: 20,
 		padding: 30,
-		justifyContent: 'center',
-		alignItems: 'center',
+		justifyContent: 'flex-start',
+		alignItems: 'flex-start',
 	},
 	buttonText: {
-		justifyContent: 'center',
-		alignItems: 'center',
 		fontSize: 25,
-		color: 'white',
-		backgroundColor: 'red'
 	}
 })
 
