@@ -14,15 +14,8 @@ var Button = React.createClass({
 		})
 	},
 
-	componentDidMount: function() {
-		console.log(this.state.buttonValue);
-	},
-
 	passButtonValue: function() {
-		console.log('we are in the pass');
-
 		this.props.buttonPress(this.props.buttonValue);
-		
 	},
 
 	render: function() {
@@ -48,9 +41,11 @@ var styles = StyleSheet.create({
 		borderWidth: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
+		margin: 25,
 	},
 	buttonText: {
-		fontSize: 25,
+		fontFamily: 'Cochin',
+		fontSize: 20,
 		color: 'white',
 	}
 })
