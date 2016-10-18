@@ -9,17 +9,15 @@ import {
 
 var Home = require('./assets/views/home');
 
-const ROUTES = {
+ var ROUTES = {
   home: {title: 'home', component: Home, index: 0}
-}
+ }
 
 var Main = React.createClass({
+
   renderScene: function(route, navigator) {
     var Component = ROUTES[route.name].component;
     var title = ROUTES[route.name].title;
-    console.log(Component);
-    console.log(title);
-    console.log(navigator);
 
     return (
       <Component 
@@ -31,6 +29,7 @@ var Main = React.createClass({
   },
 
   render: function() {
+   
     return (
       <Navigator
         ref={'NAVIGATOR'}

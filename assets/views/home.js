@@ -12,7 +12,7 @@ import {
 
 var Button = require('../components/button');
 
-export default class pushTimeSign extends Component {
+class pushTimeSign extends Component {
   constructor(props) {
   super(props);
     this.state = {
@@ -154,3 +154,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
 });
+
+module.exports = pushTimeSign;
